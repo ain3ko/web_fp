@@ -1,0 +1,46 @@
+/* File CSS Anda */
+.ingredient-input-group {
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
+}
+
+.step-input-group > div {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 0.5rem;
+}
+
+.step-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ingredient-input-group > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.form-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+
+}
+
+.delete-button {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #b91c1c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
