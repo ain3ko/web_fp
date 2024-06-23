@@ -70,7 +70,7 @@
                                     </svg>
                                 </div>
                             </div>
-
+                            <!-- fitur rating -->
                             <button class="bg-white hover:bg-custom-smoot-choco text-black font-semibold py-2 px-4 rounded-lg ms-2"
                                     style="width: 150px; height: 40px;">
                                 <div class="flex items-center justify-between">

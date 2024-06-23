@@ -28,18 +28,22 @@
         <h2 class="text-3xl font-bold text-center">POPULER</h2>
     </div>
 
-    <div class="flex-none md:flex md:justify-center md:justify-items-center md:m-6 ">
-    @for ($i = 0; $i < 3; $i++)
-            <div class="max-w-44 md:mx-3 mx-auto mb-12 mb:mb-0 bg-gray-50 border rounded-lg overflow-hidden shadow-lg">
-                <a href="/resep">
-                    <div class="flex justify-center overflow-hidden w-auto h-auto">
-                       <div class="image-home-chart inline-block  relative bg-cover w-44 md:w-36 h-40 shadow-lg bg-[url('https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Makanan/Soto.jpg')] hover:scale-125 transition-all"></div>
-                     </div>
-                     <div class="flex-col items-center">
-                        <div class="my-2">
-                            <p class="mb-2 font-normal text-sm text-gray-700 text-center" >Makananku</p>
-                        </div>
-                        <div class="container-star flex justify-between px-2 items-end">
+    <div class="flex-none flex justify-center justify-items-center m-6 ">
+    @foreach ($popularFoods as $food)
+        <div class="max-w-44 md:mx-6 mx-auto mb-12 mb:mb-0 bg-gray-50 border rounded-lg overflow-hidden shadow-lg">
+            <a href="/detail-resep/{{ $food->food_id }}">
+                <div class="flex justify-center overflow-hidden w-auto h-auto"> 
+                    @if($food->food_img)
+                    <div class="image-home-chart inline-block relative bg-cover w-44 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('{{ asset('storage/' . $food->food_img) }}'); background-position: center; background-size: cover;"></div>
+                    @else
+                    <div class="image-home-chart inline-block relative bg-cover w-44 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('https://via.placeholder.com/200'); background-position: center; background-size: cover;"></div>
+                    @endif
+                </div>
+                <div class="flex-col items-center">
+                    <div class="my-2">
+                        <p class="mb-2 font-normal text-sm text-gray-700 text-center">{{ $food->food_name }}</p>
+                    </div>
+                    <div class="container-star flex justify-between px-2 items-end">
                             <div class="container-star flex items-center my-2 px-1">
                                 <div class="img-sub-rate"><img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Rating%20kuning.png" width="16px" heigth="16px"/></div>
                                 <div class="text-rate ml-1 text-[10px]"><p>6.9</p></div>
@@ -48,12 +52,12 @@
                                 <div class="img-sub-rate"><img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Seen.png" width="16px" heigth="16px"/></div>
                                 <div class="text-rate ml-1  text-[10px]"><p>235</p></div>
                             </div>
-                        </div>
                     </div>
-                </a>
-            </div>
-        @endfor
-</div>
+                </div>
+            </a>
+        </div>
+    @endforeach
+    </div>
 <!-- end populer -->
 
 <!-- start Baru Ditambahkan -->
@@ -65,16 +69,20 @@
     <div class="makanan-scroll mb-16 ">
         <div class="flex overflow-x-hidden scroll-smooth">
                 <ul class="flex px-5">
-                @for ($i = 0; $i < 10; $i++)
+                @foreach ($NewFoods as $food)
                 <li class="w-auto">
-                    <div class="max-w-44 mx-6 bg-gray-50 border rounded-lg overflow-hidden shadow-lg">
+                    <div class="max-w-48 mx-6 bg-gray-50 border rounded-lg overflow-hidden shadow-lg">
                         <a href="/resep">
                         <div class="flex justify-center overflow-hidden w-auto h-auto">
-                            <div class="image-home-chart inline-block relative bg-cover w-44 h-48 shadow-lg bg-[url('https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Makanan/Es%20Cendol.jpg')] hover:scale-125 transition-all"></div>
+                        @if($food->food_img)
+                        <div class="image-home-chart inline-block relative bg-cover w-48 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('{{ asset('storage/' . $food->food_img) }}'); background-position: center; background-size: cover;"></div>
+                        @else
+                        <div class="image-home-chart inline-block relative bg-cover w-48 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('https://via.placeholder.com/200'); background-position: center; background-size: cover;"></div>
+                        @endif
                         </div>
                         <div class="flex-col items-center">
                             <div class="my-2">
-                            <p class="mb-2 font-normal text-sm text-gray-700 text-center">Makanan</p>
+                            <p class="mb-2 font-normal text-sm text-gray-700 text-center">{{ $food->food_name }}</p>
                             </div>
                             <div class="container-star flex justify-between px-2 items-end">
                             <div class="container-star flex items-center my-2 px-1">
@@ -90,7 +98,7 @@
                         </a>
                     </div>
                 </li>
-            @endfor
+            @endforeach
             </ul>
         </div>
             <div class=" w-full flex justify-between translate-y-[-350%]">
