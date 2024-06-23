@@ -9,18 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::table('food', function (Blueprint $table) {
-            $table->string('food_img')->nullable()->change();
+        Schema::create('category', function (Blueprint $table) {
+            $table->id('category_id');
+            $table->string('category_name');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        //
+        Schema::dropIfExists('category');
     }
 };
