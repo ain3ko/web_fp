@@ -20,7 +20,7 @@ searchForm.addEventListener('submit', (event) => {
   if (searchTerm.toLowerCase() === 'get:halaman admin') {
     window.location.href = 'admin/admin-login';
   } else {
-    console.log('Search term:', searchTerm);
+    window.location.href = '/resep?search=' + encodeURIComponent(searchTerm); 
   }
 });
 

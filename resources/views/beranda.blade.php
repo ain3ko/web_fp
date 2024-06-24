@@ -34,7 +34,7 @@
             <a href="{{ route('detail-resep', $recipe->recipe_id) }}">
                 <div class="flex justify-center overflow-hidden w-auto h-auto">
                 @if($recipe->food->food_img)
-                    <div class="image-home-chart inline-block relative bg-cover w-44 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: ('{{ asset('storage/' . $recipe->food->food_img) }}'); background-position: center; background-size: cover;"></div>
+                    <div class="image-home-chart inline-block relative bg-cover w-44 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('{{ asset('storage/' . $recipe->food->food_img) }}');  background-position: center; background-size: cover;"></div>
                     @else
                     <div class="image-home-chart inline-block relative bg-cover w-44 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('https://via.placeholder.com/200'); background-position: center; background-size: cover;"></div>
                     @endif

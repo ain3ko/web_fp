@@ -49,3 +49,4 @@ Route::post('/admin/admin-tambah', [RecipeController::class, 'store'])->name('ad
 Route::post('/admin/admin-login', [AuthController::class, 'login'])->name('admin.login');
 Route::get('/', [DirectRecipeController::class, 'index'])->name('beranda');
 Route::get('/detail-resep/{recipeId}', [DirectRecipeController::class, 'show'])->name('detail-resep');
+Route::get('/resep', [DirectRecipeController::class, 'resep'])->name('resep');
