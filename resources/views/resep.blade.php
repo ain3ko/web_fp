@@ -111,14 +111,15 @@
 
       <div class="content-main w-full h-full mb-4">
       <!-- content -->
-      @for ($i = 0; $i < 5 ; $i++)
+      @foreach ($recipes as $recipe)
       <div class="resep-card w-full h-24 bg-white rounded-md shadow-lg flex overflow-hidden mb-4">
           <div class="content-img overflow-hidden">
-            <div class="img-resep bg-[url('https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Makanan/Soto.jpg')] inline-block bg-cover relative min-w-24 h-full hover:scale-125 transition-all"></div>
+            <div class="img-resep inline-block bg-cover relative min-w-24 h-full hover:scale-125 transition-all" style="background-image: url({{ $recipe->food->food_img }})"></div>
           </div>
-          <a href="http:/detail-resep" class="content-text-main ml-4 w-4/5 flex flex-col justify-around py-2">
-            <div class="content--title">Judul</div>
-            <div class="content--desc"><p class="font-light text-xs truncate w-4/5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, labore dignissimos. Reiciendis distinctio quasi repudiandae ipsa voluptate ipsam? Aliquam molestias ipsum doloremque suscipit corporis, ex nobis labore enim ut quae.</p></div>
+          <a href="{{ route('recipe.show', $recipe->food_id) }}" class="content-text-main ml-4 w-4/5 flex flex-col justify-around py-2">
+          <div class="content--title">{{ $recipe->food->food_name }}</div>
+          <div class="content--desc">{{ $recipe->food->food_desc }}</div>
+
             <div class="content--rate h-4 flex items-center">
               <img src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/icons8-star-30.png" alt="" width="16" height="16">
               <p class = "text-xs mx-1">4.9</p>
@@ -127,7 +128,7 @@
             </div>
           </a>
         </div>
-        @endfor
+        @endforeach
       <!-- end content -->
       
         </div>

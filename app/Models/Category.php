@@ -11,6 +11,7 @@ class Category extends Model
 
     // Nama tabel yang sesuai dengan model
     protected $table = 'category'; // Sesuaikan jika nama tabel Anda berbeda
+    protected $primaryKey = 'category_id';
 
     // Kolom-kolom yang dapat diisi secara massal
     protected $fillable = [

@@ -10,25 +10,26 @@ class Recipe extends Model
     use HasFactory;
 
     protected $table = 'recipe';
+    protected $primaryKey = 'recipe_id';
 
     protected $fillable = [
         'food_id', 'ingredient_id', 'step_id'
     ];
     
-    // Relasi dengan model Food (belongsTo)
-        public function food()
+    public function food()
     {
-        return $this->belongsTo(Food::class);
+        return $this->belongsTo(Food::class, 'food_id');
     }
 
-    public function ingredient()
+    public function ingredients()
     {
-        return $this->belongsTo(Ingredient::class);
+        return $this->belongsTo(Ingredient::class, 'ingredient_id');
     }
 
-    public function step()
+    public function steps()
     {
-        return $this->belongsTo(Step::class);
+        return $this->belongsTo(Step::class, 'step_id');
     }
+
     public $timestamps = false;
 }

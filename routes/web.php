@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\DirectRecipeController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,7 +44,8 @@ Route::get('/admin/admin-login', function () {
         ]);
 });
 
-Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::match(['get', 'post'], '/admin/admin-tambah', [RecipeController::class, 'create'])->name('admin.admin-tambah');
 Route::post('/admin/admin-tambah', [RecipeController::class, 'store'])->name('admin.admin-tambah.store');
 Route::post('/admin/admin-login', [AuthController::class, 'login'])->name('admin.login');
+Route::get('/', [DirectRecipeController::class, 'index'])->name('beranda');
+Route::get('/detail-resep/{recipeId}', [DirectRecipeController::class, 'show'])->name('detail-resep');

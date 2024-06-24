@@ -5,38 +5,32 @@
 <div class="main--content w-full flex-none md:flex md:justify-center md:m-12 bg-white">
         <!-- Kotak Foto -->
             <div class="side--left w-4/5 h-60 md:w-80 md:h-60 rounded-lg drop-shadow-lg md:mx-6 md:my-0 mx-auto my-12 overflow-hidden">
-            <div class="img-resep bg-[url('https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Makanan/Soto.jpg')] inline-block bg-cover relative w-full h-full hover:scale-125 transition-all"></div>
+            <div class="img-resep inline-block bg-cover relative w-full h-full hover:scale-125 transition-all" style="background-image: url('{{ asset('storage/' . $recipe->food->food_img) }}');"></div>
             </div>
         <!-- End Kotak Foto -->
 
         <!-- Deskripsi Masakan -->
             <div class="sidebar-right-main mx-auto md:mx-6 w-4/5 md:w-2/5">
-                <div class=" sidebar--right bg-custom-light-choco p-6 items-center rounded-lg drop-shadow-md">
-                    <h2 class="text-xl font-bold mb-4">Judul Masakan</h2>
-                    <p>Deskripsi singkat mengenai masakan</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    <br>
-                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                    </p>
-                    <br>
-                    <h2 class="text-xl font-semibold mb-4">Bahan Masakan</h2>
-                    <ul class="list-inside list-disc">
-                        <li>Bahan 1</li>
-                        <li>Bahan 2</li>
-                        <li>Bahan 3</li>
-                        <li>Bahan 4</li>
-                        <li>Bahan 5</li>
-                    </ul>
-                    <br>
-                    <h2 class="text-xl font-semibold mb-4">Cara Membuat</h2>
-                    <ul class="list-inside list-disc">
-                        <li>Tutorial 1</li>
-                        <li>Tutorial 2</li>
-                        <li>Tutorial 3</li>
-                        <li>Tutorial 4</li>
-                        <li>Tutorial 5</li>
-                    </ul>
-                </div>
+                <div class="sidebar--right bg-custom-light-choco p-6 items-center rounded-lg drop-shadow-md">
+        <h2 class="text-xl font-bold mb-4">{{ $recipe->food->food_name }}</h2>
+        <p>{{ $recipe->food->food_desc }}</p> 
+        <br>
+
+        <h2 class="text-xl font-semibold mb-4">Bahan Masakan</h2>
+        <ul class="list-inside list-disc">
+           @foreach(range(1, 8) as $i)
+           <li>{{ $recipe->ingredients["ingredient_$i"] }}</li>
+           @endforeach
+        </ul>
+
+         <br>
+        <h2 class="text-xl font-semibold mb-4">Cara Membuat</h2>
+        <ul class="list-inside list-disc">
+            @foreach(range(1, 8) as $i)
+            <li>{{ $recipe->steps["step_$i"] }}</li>
+            @endforeach
+        </ul>
+    </div>
         <!-- End Deskripsi Masakan -->
 
             <!-- Rating -->

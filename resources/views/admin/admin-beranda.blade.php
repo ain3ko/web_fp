@@ -21,19 +21,19 @@
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                   <th scope="col" class="px-6 py-3">
-                      Product name
+                      Resep ID
                   </th>
                   <th scope="col" class="px-6 py-3">
-                      Color
+                      Nama masakan
                   </th>
                   <th scope="col" class="px-6 py-3">
-                      Category
+                      Kategori
                   </th>
                   <th scope="col" class="px-6 py-3">
-                      Price
+                      Bahan ID
                   </th>
                   <th scope="col" class="px-6 py-3">
-                      Action
+                      Langkah ID
                   </th>
               </tr>
           </thead>

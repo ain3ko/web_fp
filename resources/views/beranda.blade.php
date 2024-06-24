@@ -29,19 +29,19 @@
     </div>
 
     <div class="flex-none flex justify-center justify-items-center m-6 ">
-    @foreach ($popularFoods as $food)
+    @foreach ($recipes as $recipe)
         <div class="max-w-44 md:mx-6 mx-auto mb-12 mb:mb-0 bg-gray-50 border rounded-lg overflow-hidden shadow-lg">
-            <a href="/detail-resep/{{ $food->food_id }}">
-                <div class="flex justify-center overflow-hidden w-auto h-auto"> 
-                    @if($food->food_img)
-                    <div class="image-home-chart inline-block relative bg-cover w-44 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('{{ asset('storage/' . $food->food_img) }}'); background-position: center; background-size: cover;"></div>
+            <a href="{{ route('detail-resep', $recipe->recipe_id) }}">
+                <div class="flex justify-center overflow-hidden w-auto h-auto">
+                @if($recipe->food->food_img)
+                    <div class="image-home-chart inline-block relative bg-cover w-44 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: ('{{ asset('storage/' . $recipe->food->food_img) }}'); background-position: center; background-size: cover;"></div>
                     @else
                     <div class="image-home-chart inline-block relative bg-cover w-44 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('https://via.placeholder.com/200'); background-position: center; background-size: cover;"></div>
                     @endif
                 </div>
                 <div class="flex-col items-center">
                     <div class="my-2">
-                        <p class="mb-2 font-normal text-sm text-gray-700 text-center">{{ $food->food_name }}</p>
+                        <p class="mb-2 font-normal text-sm text-gray-700 text-center">{{ $recipe->food->food_name }}</p>
                     </div>
                     <div class="container-star flex justify-between px-2 items-end">
                             <div class="container-star flex items-center my-2 px-1">
@@ -69,20 +69,20 @@
     <div class="makanan-scroll mb-16 ">
         <div class="flex overflow-x-hidden scroll-smooth">
                 <ul class="flex px-5">
-                @foreach ($NewFoods as $food)
+                @foreach ($newRecipes as $recipe) 
                 <li class="w-auto">
                     <div class="max-w-48 mx-6 bg-gray-50 border rounded-lg overflow-hidden shadow-lg">
-                        <a href="/resep">
+                        <a href="{{ route('detail-resep', $recipe->recipe_id) }}">
                         <div class="flex justify-center overflow-hidden w-auto h-auto">
-                        @if($food->food_img)
-                        <div class="image-home-chart inline-block relative bg-cover w-48 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('{{ asset('storage/' . $food->food_img) }}'); background-position: center; background-size: cover;"></div>
+                        @if($recipe->food->food_img)
+                        <div class="image-home-chart inline-block relative bg-cover w-48 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('{{ asset('storage/' . $recipe->food->food_img) }}');  background-position: center; background-size: cover;"></div>
                         @else
                         <div class="image-home-chart inline-block relative bg-cover w-48 md:w-40 h-40 shadow-lg hover:scale-125 transition-all" style="background-image: url('https://via.placeholder.com/200'); background-position: center; background-size: cover;"></div>
                         @endif
                         </div>
                         <div class="flex-col items-center">
                             <div class="my-2">
-                            <p class="mb-2 font-normal text-sm text-gray-700 text-center">{{ $food->food_name }}</p>
+                            <p class="mb-2 font-normal text-sm text-gray-700 text-center">{{ $recipe->food->food_name }}</p>
                             </div>
                             <div class="container-star flex justify-between px-2 items-end">
                             <div class="container-star flex items-center my-2 px-1">

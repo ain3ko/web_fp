@@ -18,7 +18,7 @@ searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const searchTerm = document.getElementById('search-dropdown').value.trim();
   if (searchTerm.toLowerCase() === 'get:halaman admin') {
-    window.location.href = 'admin/admin-beranda';
+    window.location.href = 'admin/admin-login';
   } else {
     console.log('Search term:', searchTerm);
   }
