@@ -20,9 +20,7 @@ searchForm.addEventListener('submit', (event) => {
   if (searchTerm.toLowerCase() === 'get:halaman admin') {
     window.location.href = 'admin/admin-login';
   } else {
-    window.location.href = '/resep?search=' + encodeURIComponent(searchTerm); 
+    window.location.href = '/resep?search=' + encodeURIComponent(searchTerm);
   }
 });
-
-// Logika serupa untuk menambahkan langkah-langkah
 

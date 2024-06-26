@@ -13,7 +13,7 @@ class Recipe extends Model
     protected $primaryKey = 'recipe_id';
 
     protected $fillable = [
-        'food_id', 'ingredient_id', 'step_id'
+        'food_id', 'ingredient_id', 'step_id', 'rating'
     ];
     
     public function food()
@@ -30,6 +30,10 @@ class Recipe extends Model
     {
         return $this->belongsTo(Step::class, 'step_id');
     }
+    public function rating()
+{
+    return $this->belongsTo(Rating::class, 'rating_id'); // Use 'rating_id' as the foreign key
+}
 
     public $timestamps = false;
 }

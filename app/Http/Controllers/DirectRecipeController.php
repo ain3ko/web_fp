@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use App\Models\Recipe;
+use App\Models\Rating;
 use App\Models\Food;
 use App\Models\Ingredient;
 use App\Models\Step;
@@ -15,13 +16,12 @@ class DirectRecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::with(['food', 'ingredients', 'steps'])
-        ->orderBy('recipe_id', 'desc')
             ->take(3)
             ->get();
 
         $newRecipes = Recipe::with(['food', 'ingredients', 'steps'])
             ->orderBy('recipe_id', 'desc')
-            ->take(10) 
+            ->take(10)
             ->get();
 
         return view('beranda', [
@@ -59,11 +59,11 @@ class DirectRecipeController extends Controller
     if ($request->has('category')) {
         $category = $request->input('category');
         $query->whereHas('food', function ($q) use ($category) {
-            $q->where('category_id', $category); // Use 'category_id' directly
+            $q->where('category_id', $category);
         });
     }
     // Filter Logic (Default to latest recipes)
-    $orderBy = $request->input('orderBy', 'latest'); // Default to 'latest'
+    $orderBy = $request->input('orderBy', 'latest');
     if ($orderBy == 'latest') {
         $query->orderBy('recipe_id', 'desc');
     } elseif ($orderBy == 'a-z') {

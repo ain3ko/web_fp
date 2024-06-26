@@ -1,0 +1,25 @@
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+
+.rating label {
+  color: #ccc; /* Warna bintang default */
+}
+
+.rating input[type="radio"]:checked ~ label .icon, /* Bintang yang terpilih */
+.rating input[type="radio"]:hover ~ label .icon { /* Bintang yang dihover */
+  color: #D22B2B;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none; /* Untuk kompatibilitas browser */
+}
+
+.text--rate {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px; /* Tambahkan margin bottom pada ukuran mobile */
+}

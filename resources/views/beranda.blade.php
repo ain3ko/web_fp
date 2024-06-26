@@ -45,12 +45,20 @@
                     </div>
                     <div class="container-star flex justify-between px-2 items-end">
                             <div class="container-star flex items-center my-2 px-1">
-                                <div class="img-sub-rate"><img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Rating%20kuning.png" width="16px" heigth="16px"/></div>
-                                <div class="text-rate ml-1 text-[10px]"><p>6.9</p></div>
+                                <div class="img-sub-rate">
+                                    <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Rating%20kuning.png" width="16px" heigth="16px"/>
+                                </div>
+                                <div class="text-rate ml-1 text-[10px]">
+                                    <p>6.9</p>
+                                </div>
                             </div>
                             <div class="container-eyes flex items-center my-2 px-1">
-                                <div class="img-sub-rate"><img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Seen.png" width="16px" heigth="16px"/></div>
-                                <div class="text-rate ml-1  text-[10px]"><p>235</p></div>
+                                <div class="img-sub-rate">
+                                    <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Seen.png" width="16px" heigth="16px"/>
+                                </div>
+                                <div class="text-rate ml-1  text-[10px]">
+                                    <p>235</p>
+                                </div>
                             </div>
                     </div>
                 </div>
@@ -86,12 +94,20 @@
                             </div>
                             <div class="container-star flex justify-between px-2 items-end">
                             <div class="container-star flex items-center my-2 px-1">
-                                <div class="img-sub-rate"><img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Rating%20kuning.png" width="16px" heigth="16px"></div>
-                                <div class="text-rate ml-1 text-[10px]"><p>6.9</p></div>
+                                <div class="img-sub-rate">
+                                    <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Rating%20kuning.png" width="16px" heigth="16px">
+                                </div>
+                                <div class="text-rate ml-1 text-[10px]">
+                                    <p>6.9</p>
+                                </div>
                             </div>
                             <div class="container-eyes flex items-center my-2 px-1">
-                                <div class="img-sub-rate"><img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Seen.png" width="16px" heigth="16px"></div>
-                                <div class="text-rate ml-1 text-[10px]"><p>235</p></div>
+                                <div class="img-sub-rate">
+                                    <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Seen.png" width="16px" heigth="16px">
+                                </div>
+                                <div class="text-rate ml-1 text-[10px]">
+                                    <p>235</p>
+                                </div>
                             </div>
                             </div>
                         </div>

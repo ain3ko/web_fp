@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin | {{$title}} </title>
 </head>
-<body class="font-montserrat">
+<body class="bg-custom-light-choco font-montserrat">
 
 <!-- seidebar -->
 <div>@include('partials.admin-navbar')</div>

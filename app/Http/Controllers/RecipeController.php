@@ -5,6 +5,7 @@ use App\Models\Food;
 use App\Models\Ingredient;
 use App\Models\Step;
 use App\Models\Recipe;
+use App\Models\Rating;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

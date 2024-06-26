@@ -2,7 +2,9 @@
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DirectRecipeController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ViewRecipeAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -44,9 +46,19 @@ Route::get('/admin/admin-login', function () {
         ]);
 });
 
+Route::delete('/admin-beranda/{recipe}', [ViewRecipeAdmin::class, 'destroy'])->name('admin.admin-beranda.destroy');
 Route::match(['get', 'post'], '/admin/admin-tambah', [RecipeController::class, 'create'])->name('admin.admin-tambah');
 Route::post('/admin/admin-tambah', [RecipeController::class, 'store'])->name('admin.admin-tambah.store');
 Route::post('/admin/admin-login', [AuthController::class, 'login'])->name('admin.login');
 Route::get('/', [DirectRecipeController::class, 'index'])->name('beranda');
 Route::get('/detail-resep/{recipeId}', [DirectRecipeController::class, 'show'])->name('detail-resep');
 Route::get('/resep', [DirectRecipeController::class, 'resep'])->name('resep');
+Route::post('/rate/recipe/{recipeId}', [RatingController::class, 'store'])->name('rate.recipe');
+Route::get('/admin/admin-beranda', [ViewRecipeAdmin::class, 'index'])
+    ->middleware('auth')
+    ->name('admin.admin-beranda');
+Route::get('/admin/admin-login', [AuthController::class, 'showLoginForm'])
+    ->middleware('guest')
+    ->name('admin.login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
