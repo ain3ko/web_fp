@@ -10,11 +10,11 @@ return new class extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('recipe_id'); // Foreign key to recipe
-            $table->decimal('rating', 3, 2);
+            $table->unsignedBigInteger('recipe_id');
+            $table->decimal('rating', 3, 2); // Adjust the data type if needed
             $table->timestamps(); // Optional
 
-            // Add a foreign key constraint
+            // Foreign key constraint
             $table->foreign('recipe_id')->references('recipe_id')->on('recipe')->onDelete('cascade');
         });
     }
@@ -24,3 +24,4 @@ return new class extends Migration
         Schema::dropIfExists('ratings');
     }
 };
+

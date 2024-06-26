@@ -9,11 +9,11 @@ class Rating extends Model
 {
     protected $table = 'ratings';
     protected $primaryKey = 'rating_id';
-    protected $fillable = ['rating_id', 'rating']; // Add 'rating' here
+    protected $fillable = ['rating_id', 'recipe_id','rating']; // Add 'rating' here
 
     public function recipe()
-    {
-        return $this->hasMany(Recipe::class, 'rating_id');
-    }
+{
+    return $this->belongsTo(Recipe::class, 'recipe_id');
+}
     public $timestamps = false;
 }

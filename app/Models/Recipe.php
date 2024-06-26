@@ -30,10 +30,9 @@ class Recipe extends Model
     {
         return $this->belongsTo(Step::class, 'step_id');
     }
-    public function rating()
-{
-    return $this->belongsTo(Rating::class, 'rating_id'); // Use 'rating_id' as the foreign key
-}
-
+    public function ratings()
+    {
+    return $this->hasMany(Rating::class, 'recipe_id');
+    }
     public $timestamps = false;
 }

@@ -53,7 +53,10 @@ Route::post('/admin/admin-login', [AuthController::class, 'login'])->name('admin
 Route::get('/', [DirectRecipeController::class, 'index'])->name('beranda');
 Route::get('/detail-resep/{recipeId}', [DirectRecipeController::class, 'show'])->name('detail-resep');
 Route::get('/resep', [DirectRecipeController::class, 'resep'])->name('resep');
-Route::post('/rate/recipe/{recipeId}', [RatingController::class, 'store'])->name('rate.recipe');
+// routes/web.php
+Route::post('/rate', [RatingController::class, 'store'])->name('rate.recipe');
+
+
 Route::get('/admin/admin-beranda', [ViewRecipeAdmin::class, 'index'])
     ->middleware('auth')
     ->name('admin.admin-beranda');
@@ -61,4 +64,5 @@ Route::get('/admin/admin-login', [AuthController::class, 'showLoginForm'])
     ->middleware('guest')
     ->name('admin.login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
