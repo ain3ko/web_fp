@@ -95,9 +95,16 @@
     <div class="content-img overflow-hidden">
         <img src="{{ asset('storage/' . $recipe->food->food_img) }}" alt="{{ $recipe->food->food_name }}" class="inline-block bg-cover relative w-28 h-full hover:scale-125 transition-all">
     </div>
-    <a href="{{ route('detail-resep', $recipe->recipe_id) }}" class="content-text-main ml-4 w-4/5 flex flex-col justify-around py-2">
+    <a href="{{ route('detail-resep', $recipe->recipe_id) }}" class="content-text-main ml-4 w-full flex flex-col justify-around py-2">
         <div class="content--title font-semibold">{{ $recipe->food->food_name }}</div>
-        <div class="content--desc text-yellow-700">{{ Str::limit($recipe->food->food_desc, 100) }}</div> 
+        <div class="content--desc text-yellow-700">{{ Str::limit($recipe->food->food_desc, 100) }}</div>
+        <div class="content--category text-xs">
+        @if ($recipe->food->category)
+        {{ $recipe->food->category->category_name }}
+        @else
+        Kategori Tidak Tersedia
+        @endif
+        </div>
     </a>
 </div>
 

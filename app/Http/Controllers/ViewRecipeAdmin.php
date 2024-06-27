@@ -30,12 +30,11 @@ class ViewRecipeAdmin extends Controller
     return view('admin.admin-beranda', [
         'recipes' => $recipes,
         "title" => "Beranda",
-        'search' => $request->input('search') 
+        'search' => $request->input('search'),
     ]);
     }
     public function destroy(Recipe $recipe)
     {
-// Delete related recipes first
     $recipe->food->recipe()->delete();
 
     // Delete related food, ingredient, and step records
@@ -46,7 +45,8 @@ class ViewRecipeAdmin extends Controller
     // Finally, delete the recipe
     $recipe->delete();
     return redirect()->route('admin.admin-beranda')->with('success', 'Resep berhasil dihapus!')->withHeaders([
-        'X-CSRF-TOKEN' => csrf_token() // Add new CSRF token to headers
+        'X-CSRF-TOKEN' => csrf_token()
     ]);
+
     }
 }

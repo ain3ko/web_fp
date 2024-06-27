@@ -10,8 +10,27 @@
         <!-- End Kotak Foto -->
 
         <!-- Deskripsi Masakan -->
-            <div class="sidebar-right-main mx-auto md:mx-6 w-4/5 md:w-2/5">
-                <div class="sidebar--right bg-custom-light-choco p-6 items-center rounded-lg drop-shadow-md">
+        <div class="sidebar-right-main mx-auto md:mx-6 w-4/5 md:w-2/5">
+        <div class="sidebar--right bg-custom-light-choco p-6 items-center rounded-lg drop-shadow-md">
+
+        <div class="w-full mb-6">
+    <div>
+        @if ($recipe->food->category)
+            <p class="">{{ $recipe->food->category->category_name }}</p>
+        @else
+            <p class="">Kategori Tidak Tersedia</p>
+        @endif
+    </div>
+    <div class="flex items-end">
+        <div class="img-sub-rate">
+            <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Rating%20kuning.png" width="18px" height="18px" loading="lazy">
+        </div>
+        <div class="text-rate ml-1 text-[14px] flex items-end">
+            <p>{{ $recipe->averageRating ?: '0.0' }}</p> 
+        </div>
+    </div>
+</div>
+
         <h2 class="text-xl font-bold mb-4">{{ $recipe->food->food_name }}</h2>
         <p>{{ $recipe->food->food_desc }}</p> 
         <br>

@@ -34,5 +34,6 @@ class Recipe extends Model
     {
     return $this->hasMany(Rating::class, 'recipe_id');
     }
+
     public $timestamps = false;
 }

@@ -24,7 +24,7 @@
                     <th scope="col" class="px-6 py-3">Nama masakan</th>
                     <th scope="col" class="px-6 py-3">Step ID</th>
                     <th scope="col" class="px-6 py-3">Bahan ID</th>
-                    <th scope="col" class="px-6 py-3">Action</th>
+                    <th scope="col" class="px-6 py-3 text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,14 +36,13 @@
                         <td class="px-6 py-4">{{ $recipe->step_id }}</td>
                         <td class="px-6 py-4">{{ $recipe->ingredient_id }}</td>
                         <td class="px-6 py-4">
-                        <td class="px-6 py-4">
-                        <form action="{{ route('admin.admin-beranda.destroy', $recipe) }}" method="POST" class="inline-block">
+                        <form action="{{ route('admin.admin-beranda.destroy', $recipe) }}" method="POST" class="inline-block flex justify-center">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Anda yakin ingin menghapus resep ini?')">
-                                <i class="fas fa-times"></i> </button>
+                                <i class="fas fa-times"></i> 
+                            </button>
                         </form>
-                        </td>
                         </td>
                     </tr>
                 @endforeach

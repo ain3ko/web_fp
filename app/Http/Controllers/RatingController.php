@@ -24,14 +24,7 @@ class RatingController extends Controller
         'rating' => $validatedData['rating']
     ]);
 
-    // Calculate and update average rating (optional)
-    $recipe = Recipe::findOrFail($validatedData['recipe_id']);
-    $averageRating = $recipe->ratings()->avg('rating');
-    $recipe->rating = $averageRating;
-    $recipe->save();
-
     return redirect()->back()->with('success', 'Rating berhasil disimpan!');
 }
-
 
 }

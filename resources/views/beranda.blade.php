@@ -44,22 +44,16 @@
                         <p class="mb-2 font-normal text-sm text-gray-700 text-center">{{ $recipe->food->food_name }}</p>
                     </div>
                     <div class="container-star flex justify-between px-2 items-end">
-                            <div class="container-star flex items-center my-2 px-1">
-                                <div class="img-sub-rate">
-                                    <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Rating%20kuning.png" width="16px" heigth="16px"/>
-                                </div>
-                                <div class="text-rate ml-1 text-[10px]">
-                                    <p>6.9</p>
-                                </div>
+                    <div class="container-star flex items-center my-2 px-1">
+                            <div class="img-sub-rate">
+                                <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Rating%20kuning.png" width="16px" heigth="16px"/>
                             </div>
-                            <div class="container-eyes flex items-center my-2 px-1">
-                                <div class="img-sub-rate">
-                                    <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Seen.png" width="16px" heigth="16px"/>
-                                </div>
-                                <div class="text-rate ml-1  text-[10px]">
-                                    <p>235</p>
-                                </div>
+                            <div class="text-rate ml-1 text-[10px]">
+                                <p class="text-black">{{ $recipe->averageRating }}</p>
                             </div>
+                        </div>
+                        <div class="container-eyes flex items-center my-2 px-1">
+                        </div>
                     </div>
                 </div>
             </a>
@@ -89,7 +83,7 @@
                         @endif
                         </div>
                         <div class="flex-col items-center">
-                            <div class="my-2">
+                        <div class="my-2">
                             <p class="mb-2 font-normal text-sm text-gray-700 text-center">{{ $recipe->food->food_name }}</p>
                             </div>
                             <div class="container-star flex justify-between px-2 items-end">
@@ -98,16 +92,11 @@
                                     <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Rating%20kuning.png" width="16px" heigth="16px">
                                 </div>
                                 <div class="text-rate ml-1 text-[10px]">
-                                    <p>6.9</p>
+                                    <p>{{ $recipe->newaverageRating }}</p>
                                 </div>
                             </div>
                             <div class="container-eyes flex items-center my-2 px-1">
-                                <div class="img-sub-rate">
-                                    <img class="star-img " src="https://raw.githubusercontent.com/ain3ko/img_pemweb/main/Gambar%20Icon/Seen.png" width="16px" heigth="16px">
-                                </div>
-                                <div class="text-rate ml-1 text-[10px]">
-                                    <p>235</p>
-                                </div>
+                                
                             </div>
                             </div>
                         </div>

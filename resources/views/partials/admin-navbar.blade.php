@@ -52,7 +52,6 @@
 @else
     </li>
 @endif
-
             </ul>
         </div>
     </div>

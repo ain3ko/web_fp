@@ -9,7 +9,7 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-$credentials = $request->validate([
+    $credentials = $request->validate([
             'username' => ['required'],
             'password' => ['required'],
         ]);
@@ -17,7 +17,8 @@ $credentials = $request->validate([
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('admin/admin-beranda');
+            // Tambahkan redirect setelah login berhasil
+            return redirect()->intended(route('admin.admin-beranda'));
         }
 
         return back()->withErrors([

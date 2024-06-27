@@ -18,12 +18,19 @@ class DirectRecipeController extends Controller
         $recipes = Recipe::with(['food', 'ingredients', 'steps'])
             ->take(3)
             ->get();
-
+        foreach ($recipes as $recipe) {
+            $averageRating = $recipe->ratings->avg('rating');
+            $recipe->averageRating = number_format($averageRating, 1);
+        }
         $newRecipes = Recipe::with(['food', 'ingredients', 'steps'])
             ->orderBy('recipe_id', 'desc')
             ->take(10)
             ->get();
 
+        foreach ($newRecipes as $recipe) {
+            $newaverageRating = $recipe->ratings->avg('rating');
+            $recipe->newaverageRating = number_format($newaverageRating, 1);
+        }
         return view('beranda', [
             'recipes' => $recipes,
             'newRecipes' => $newRecipes,
@@ -34,18 +41,24 @@ class DirectRecipeController extends Controller
 
     public function show($recipeId)
     {
-        $recipe = Recipe::with(['food', 'ingredients', 'steps'])->find($recipeId);
 
-        if (!$recipe) {
-            abort(404);
-        }
+    $recipe = Recipe::with(['food.category', 'ingredients', 'steps', 'ratings'])->find($recipeId);
 
-        return view('detail-resep', ['recipe' => $recipe, "title" => "Detail Resep"]);
+    if (!$recipe) {
+        abort(404);
+    }
+
+    // Penghitungan average rating
+    $averageRating = $recipe->ratings()->avg('rating');
+    $recipe->averageRating = $averageRating ? number_format($averageRating, 1) : '0.0';
+
+    return view('detail-resep', ['recipe' => $recipe, "title" => "Detail Resep"]);
+
     }
 
     public function resep(Request $request)
 {
-    $query = Recipe::with(['food', 'ingredients', 'steps']);
+    $query = Recipe::with(['food.category', 'ingredients', 'steps']);
 
     // Search Logic
     if ($request->has('search')) {
