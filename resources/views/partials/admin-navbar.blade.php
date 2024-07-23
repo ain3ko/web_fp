@@ -14,7 +14,6 @@
           <div class="text-white">
             <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap ">MASAKANKU</span>
           </div>
-          
         </a>
       </div>
       <div class="flex items-center">

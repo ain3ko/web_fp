@@ -18,7 +18,6 @@ class RatingController extends Controller
         'recipe_id' => 'required|exists:recipe,recipe_id',
     ]);
 
-    // Create a new rating and associate it with the recipe
     Rating::create([
         'recipe_id' => $validatedData['recipe_id'],
         'rating' => $validatedData['rating']

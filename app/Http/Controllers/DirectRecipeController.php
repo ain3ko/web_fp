@@ -14,30 +14,32 @@ use Illuminate\Http\Request;
 class DirectRecipeController extends Controller
 {
     public function index()
-    {
-        $recipes = Recipe::with(['food', 'ingredients', 'steps'])
-            ->take(3)
-            ->get();
-        foreach ($recipes as $recipe) {
-            $averageRating = $recipe->ratings->avg('rating');
-            $recipe->averageRating = number_format($averageRating, 1);
-        }
-        $newRecipes = Recipe::with(['food', 'ingredients', 'steps'])
-            ->orderBy('recipe_id', 'desc')
-            ->take(10)
-            ->get();
+{
+    $recipes = Recipe::with(['food.category', 'ingredients', 'steps'])
+        ->take(3)
+        ->get();
 
-        foreach ($newRecipes as $recipe) {
-            $newaverageRating = $recipe->ratings->avg('rating');
-            $recipe->newaverageRating = number_format($newaverageRating, 1);
-        }
-        return view('beranda', [
-            'recipes' => $recipes,
-            'newRecipes' => $newRecipes,
-            "title" => "Beranda"
-        ]);
-        return view('beranda', ['recipes' => $recipes, "title" => "Beranda"]);
+    foreach ($recipes as $recipe) {
+        $averageRating = $recipe->ratings->avg('rating');
+        $recipe->averageRating = number_format($averageRating, 1);
     }
+
+    $newRecipes = Recipe::with(['food.category', 'ingredients', 'steps'])
+        ->orderBy('recipe_id', 'desc')
+        ->take(10)
+        ->get();
+
+    foreach ($newRecipes as $recipe) {
+        $newaverageRating = $recipe->ratings->avg('rating');
+        $recipe->newaverageRating = number_format($newaverageRating, 1);
+    }
+
+    return view('beranda', [
+        'recipes' => $recipes,
+        'newRecipes' => $newRecipes,
+        "title" => "Beranda"
+    ]);
+}
 
     public function show($recipeId)
     {
@@ -48,7 +50,6 @@ class DirectRecipeController extends Controller
         abort(404);
     }
 
-    // Penghitungan average rating
     $averageRating = $recipe->ratings()->avg('rating');
     $recipe->averageRating = $averageRating ? number_format($averageRating, 1) : '0.0';
 
@@ -57,25 +58,38 @@ class DirectRecipeController extends Controller
     }
 
     public function resep(Request $request)
-{
+    {
     $query = Recipe::with(['food.category', 'ingredients', 'steps']);
 
-    // Search Logic
     if ($request->has('search')) {
-        $search = $request->input('search');
-        $query->whereHas('food', function ($q) use ($search) {
-            $q->where('food_name', 'like', '%' . $search . '%');
-        });
-    }
+        $searchTerm = strtolower($request->input('search'));
 
-    // Filter Logic (Category)
+        if (str_contains($searchTerm, 'terbaik')) {
+            $query->orderByDesc(
+                Rating::select('rating')
+                    ->whereColumn('recipe_id', 'recipe.recipe_id')
+                    ->orderBy('rating', 'desc')
+                    ->limit(1)
+            );
+        } elseif (str_contains($searchTerm, 'terbaru')) {
+            $query->orderBy('recipe_id', 'desc');
+        } else {
+            $query->where(function ($q) use ($searchTerm) {
+                $q->whereHas('food', function ($foodQuery) use ($searchTerm) {
+                    $foodQuery->where('food_name', 'like', '%' . $searchTerm . '%');
+                })->orWhereHas('food.category', function ($categoryQuery) use ($searchTerm) {
+                    $categoryQuery->where('category_name', 'like', '%' . $searchTerm . '%');
+                });
+            });
+        }
+    }
     if ($request->has('category')) {
         $category = $request->input('category');
         $query->whereHas('food', function ($q) use ($category) {
             $q->where('category_id', $category);
         });
     }
-    // Filter Logic (Default to latest recipes)
+
     $orderBy = $request->input('orderBy', 'latest');
     if ($orderBy == 'latest') {
         $query->orderBy('recipe_id', 'desc');
@@ -88,7 +102,6 @@ class DirectRecipeController extends Controller
     }
 
     $categories = Category::all();
-
     $recipes = $query->paginate(5);
 
     return view('resep', [

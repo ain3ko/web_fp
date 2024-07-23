@@ -13,9 +13,7 @@
 <div class="container--resep drop-shadow-md grid grid-cols-cus-3 grid-rows-layout">
 
 <!-- navbar -->
-
 @include('partials.navbar')
-
 <!-- end navbar -->
 
 <!-- header -->
@@ -39,13 +37,11 @@
 
 <!-- sidebar -->
     <div class="sidebar col-span-4 row-span-1 md:row-span-2 md:col-span-1 flex justify-center mt-10">
-        
     <div class="sidebox bg-custom-heavy-choco w-4/5 lg:w-7/12 xl:w-64 md:h-96 my-4 md:my-0 rounded-xl drop-shadow-md flex md:flex-col items-center overflow-hidden">
     <div class="header--sidebar flex items-center mr-1 md:mr-4">
         <h1 class="font-medium text-white my-4 ml-4 mr-1">Filter</h1>
         <img src="https://github.com/ain3ko/img_pemweb/blob/main/icons8-filter-48.png?raw=true" alt="" width="16" height="16">
     </div>
-    
     <form action="{{ route('resep') }}" method="GET" class="w-4/5 text-xs font-medium bg-transparent mx-2 flex md:flex-col" id="categoryForm"> 
         <input type="hidden" name="search" value="{{ request('search') }}"> 
         <input type="hidden" name="orderBy" value="{{ request('orderBy') }}"> 
@@ -59,16 +55,18 @@
             </li>
         @endforeach
     </form>
-</div>
+    </div>
 
     </div>
 <!-- end sidebar -->
 
 <!-- content -->
+
     <div class="content col-span-4 md:col-span-3 row-span-2 mr-16 ml-16 md:ml-0">
+ <!-- sorting button -->
     <div class="content-terkait w-full h-6 mb-4 flex justify-end">
     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-custom-heavy-choco hover:bg-custom-light-choco font-medium rounded-md text-xs px-4 py-2.5 text-center inline-flex items-center h-6" type="button">
-        {{ $orderBy == 'latest' ? 'Terbaru' : ($orderBy == 'a-z' ? 'A-Z' : 'Z-A') }} 
+        {{ $orderBy == 'latest' ? 'Terbaru' : ($orderBy == 'a-z' ? 'A-Z' : 'Z-A') }}
         <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
         </svg>
@@ -86,10 +84,10 @@
             </li>
         </ul>
     </div>
-</div>
-
-      <div class="content-main w-full h-full mb-4">
-      <!-- content -->
+    </div>
+ <!-- End sorting button -->
+ <!-- main content -->
+    <div class="content-main w-full h-full mb-4">
       @foreach ($recipes as $recipe)
       <div class="resep-card w-full h-24 bg-white rounded-md shadow-lg flex overflow-hidden mb-4">
     <div class="content-img overflow-hidden">
@@ -106,12 +104,12 @@
         @endif
         </div>
     </a>
-</div>
-
-        @endforeach
-        <nav aria-label="Page navigation example">
+    </div>
+    @endforeach
+ <!-- end Main content -->
+ <!-- pagination button -->
+    <nav aria-label="Page navigation example">
     <ul class="flex items-center -space-x-px h-8 text-sm">
-
         @if ($recipes->onFirstPage())
             <li>
                 <span class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg cursor-not-allowed opacity-50">
@@ -163,9 +161,10 @@
         @endif
         </ul>
         </nav>
-      <!-- end content -->
         </div>
+ <!-- end pagination button -->
     </div>
+
 <!-- end content -->
 
 <!-- footer -->

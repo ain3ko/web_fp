@@ -15,7 +15,7 @@ class Recipe extends Model
     protected $fillable = [
         'food_id', 'ingredient_id', 'step_id', 'rating'
     ];
-    
+
     public function food()
     {
         return $this->belongsTo(Food::class, 'food_id');

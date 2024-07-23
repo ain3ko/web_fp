@@ -53,6 +53,15 @@
                             </div>
                         </div>
                         <div class="container-eyes flex items-center my-2 px-1">
+                        <div class="text-rate ml-1 text-[10px]">
+                        <p class="text-black">
+                        @if ($recipe->food->category)
+                            {{ $recipe->food->category->category_name }}
+                        @else
+                            Kategori Tidak Tersedia
+                        @endif
+                        </p>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -96,7 +105,15 @@
                                 </div>
                             </div>
                             <div class="container-eyes flex items-center my-2 px-1">
-                                
+                            <div class="text-rate ml-1 text-[10px]">
+                            <p class="text-black">
+                            @if ($recipe->food->category)
+                                {{ $recipe->food->category->category_name }}
+                            @else
+                                Kategori Tidak Tersedia
+                            @endif
+                            </p>
+                            </div>
                             </div>
                             </div>
                         </div>

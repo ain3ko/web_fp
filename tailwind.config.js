@@ -36,11 +36,9 @@ export default {
         '400': '400px',
        },
        gridTemplateColumns: {
-        // Simple 16 column grid
        'cus-3': 'repeat(4, minmax(0, 1fr))',
       },
         gridTemplateRows: {
-          // Simple 8 row grid
          'layout-md': 'auto 100px minmax(700px, 1fr) 100px',
          'layout': 'auto 100px auto minmax(700px, 1fr) 100px'
         },

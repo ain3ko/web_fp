@@ -14,10 +14,9 @@ class ViewRecipeAdmin extends Controller
     public function index(Request $request)
     {
 
-        // Initialize the query before the conditional block
-    $query = Recipe::with(['food', 'ingredients', 'steps']); 
+    // serch
+    $query = Recipe::with(['food', 'ingredients', 'steps']);
 
-    // Search Logic
     if ($request->has('search')) {
         $search = $request->input('search');
         $query->whereHas('food', function ($q) use ($search) {
@@ -37,12 +36,11 @@ class ViewRecipeAdmin extends Controller
     {
     $recipe->food->recipe()->delete();
 
-    // Delete related food, ingredient, and step records
+    // Delete 
     $recipe->food()->delete();
     $recipe->ingredients()->delete();
     $recipe->steps()->delete();
 
-    // Finally, delete the recipe
     $recipe->delete();
     return redirect()->route('admin.admin-beranda')->with('success', 'Resep berhasil dihapus!')->withHeaders([
         'X-CSRF-TOKEN' => csrf_token()
